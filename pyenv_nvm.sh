@@ -10,15 +10,26 @@ curl https://pyenv.run | bash
 #echo to profile
 file=~/.profile
 if test -f "$file"; then
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-    echo 'eval "$(pyenv init --path)"' >> ~/.profile
+    if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $file
+    then
+        # code if found
+        echo "path already exists"
+    else
+        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+        echo 'eval "$(pyenv init --path)"' >> ~/.profile
+    fi
+   
 fi
 zprofile=~/.zprofile
 if test -f "$zprofile"; then
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-    echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+    if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $file
+        then echo "file already exists"
+    else
+        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+        echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+    fi
 fi
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash

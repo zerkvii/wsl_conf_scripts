@@ -1,0 +1,1 @@
+sudo apt install g++ build-essential cmake

@@ -6,4 +6,14 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 sed -i -- 's/plugins=(git)/plugins=(zsh-syntax-highlighting git zsh-autosuggestions )/g' ~/.zshrc
 sed -i -- 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k\"/g' ~/.zshrc
+
 chsh -s /bin/zsh
+# add zprofile
+zprofile=~/.zprofile
+if test -f "$zprofile"; then
+    echo "zprofile exists"
+    else
+    touch $zprofile
+    echo "create .zprofile"
+
+fi
