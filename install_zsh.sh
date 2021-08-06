@@ -8,18 +8,3 @@ sed -i -- 's/plugins=(git)/plugins=(zsh-syntax-highlighting git zsh-autosuggesti
 sed -i -- 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k\"/g' ~/.zshrc
 
 chsh -s /bin/zsh
-# add zprofile
-# zfile=~/.zprofile
-# if test -f "$zfile"; then
-#     if grep -Fxq 'source ~/.profile"' $zfile
-#         then
-#             # code if found
-#             echo "path already exists"
-#         else
-#             echo "source ~/.profile" >> $zfile
-#     fi
-# else
-#         touch $zfile
-#         echo "source ~/.profile" >> $zfile
-#         echo "create .zprofile"
-# fi
