@@ -15,9 +15,9 @@ if test -f "$file"; then
         # code if found
         echo "path already exists"
     else
-        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-        echo 'eval "$(pyenv init --path)"' >> ~/.profile
+        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $file
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $file
+        echo 'eval "$(pyenv init --path)"' >> $file
     fi
    
 fi
@@ -26,15 +26,23 @@ if test -f "$zfile"; then
     if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $zfile
         then echo "file already exists"
     else
-        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-        echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $zfile
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $zfile
+        echo 'eval "$(pyenv init --path)"' >> $zfile
     fi
     else
     touch $zfile
-     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-     echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $zfile
+     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $zfile
+     echo 'eval "$(pyenv init --path)"' >> $zfile
 fi
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+ if grep -Fxq 'export NVM_DIR="$HOME/.nvm"' $zfile
+    then echo "already add to .zprofile"
+    else
+    echo 'export NVM_DIR="$HOME/.nvm"' >> $zfile
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm' $zfile
+    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion' >>$zfile
+fi
