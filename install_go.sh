@@ -13,15 +13,17 @@ if test -f "$file"; then
         # code if found
         echo "path already exists"
     else
-        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+        echo 'export PATH=$PATH:/usr/local/go/bin' >> $file
     fi
    
 fi
-zprofile=~/.zprofile
-if test -f "$zprofile"; then
-    if grep -Fxq 'export PATH=$PATH:/usr/local/go/bin' $file
-        then echo "file already exists"
-    else
-        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zprofile
-    fi
-fi
+# zfile=~/.zprofile
+# if test -f "$zfile"; then
+#     if grep -Fxq 'export PATH=$PATH:/usr/local/go/bin' $zfile
+#         then echo "file already exists"
+#     else
+#         echo 'export PATH=$PATH:/usr/local/go/bin' >> $zfile
+#     fi
+#     else touch $zfile
+#     echo "plz rerun this script"
+# fi

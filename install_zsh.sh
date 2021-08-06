@@ -9,11 +9,17 @@ sed -i -- 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k
 
 chsh -s /bin/zsh
 # add zprofile
-zprofile=~/.zprofile
-if test -f "$zprofile"; then
-    echo "zprofile exists"
-    else
-    touch $zprofile
-    echo "create .zprofile"
-
+zfile=~/.zprofile
+if test -f "$zfile"; then
+    if grep -Fxq 'source ~/.profile"' $zfile
+        then
+            # code if found
+            echo "path already exists"
+        else
+            echo "source ~/.profile" >> $zfile
+    fi
+else
+        touch $zfile
+        echo "source ~/.profile" >> $zfile
+        echo "create .zprofile"
 fi

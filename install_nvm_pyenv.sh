@@ -7,7 +7,7 @@ libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-d
 # install pyenv
 curl https://pyenv.run | bash
 
-#echo to profile
+# echo to profile
 file=~/.profile
 if test -f "$file"; then
     if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $file
@@ -21,15 +21,18 @@ if test -f "$file"; then
     fi
    
 fi
-zprofile=~/.zprofile
-if test -f "$zprofile"; then
-    if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $file
-        then echo "file already exists"
-    else
-        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-        echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
-    fi
-fi
+# zfile=~/.zprofile
+# if test -f "$zfile"; then
+#     if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $zfile
+#         then echo "file already exists"
+#     else
+#         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+#         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+#         echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+#     fi
+#     else
+#     touch $zfile
+#     echo "plz rerun this script"
+# fi
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
