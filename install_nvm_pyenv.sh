@@ -21,18 +21,20 @@ if test -f "$file"; then
     fi
    
 fi
-# zfile=~/.zprofile
-# if test -f "$zfile"; then
-#     if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $zfile
-#         then echo "file already exists"
-#     else
-#         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
-#         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
-#         echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
-#     fi
-#     else
-#     touch $zfile
-#     echo "plz rerun this script"
-# fi
+zfile=~/.zprofile
+if test -f "$zfile"; then
+    if grep -Fxq 'export PYENV_ROOT="$HOME/.pyenv"' $zfile
+        then echo "file already exists"
+    else
+        echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+        echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+        echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+    fi
+    else
+    touch $zfile
+     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+     echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+fi
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
