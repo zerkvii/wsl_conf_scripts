@@ -18,6 +18,8 @@ if test -f "$file"; then
         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $file
         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $file
         echo 'eval "$(pyenv init --path)"' >> $file
+        echo 'eval "$(pyenv virtualenv-init --path)"' >> $file
+
     fi
    
 fi
@@ -29,12 +31,16 @@ if test -f "$zfile"; then
         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $zfile
         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $zfile
         echo 'eval "$(pyenv init --path)"' >> $zfile
+        echo 'eval "$(pyenv virtualenv-init --path)"' >> $zfile
+
     fi
     else
     touch $zfile
      echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $zfile
      echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $zfile
      echo 'eval "$(pyenv init --path)"' >> $zfile
+     echo 'eval "$(pyenv virtualenv-init --path)"' >> $zfile
+
 fi
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
