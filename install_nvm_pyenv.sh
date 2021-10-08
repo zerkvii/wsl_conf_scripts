@@ -17,6 +17,7 @@ if test -f "$file"; then
     else
         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $file
         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $file
+	echo 'eval "$(pyenv init --path)"' >> $file
         echo 'eval "$(pyenv init -)"' >> $file
         echo 'eval "$(pyenv virtualenv-init -)"' >> $file
 
@@ -30,6 +31,7 @@ if test -f "$zfile"; then
     else
         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $zfile
         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $zfile
+	echo 'eval "$(pyenv init --path)"' >> $zfile
         echo 'eval "$(pyenv init -)"' >> $zfile
         echo 'eval "$(pyenv virtualenv-init -)"' >> $zfile
 
@@ -38,6 +40,7 @@ if test -f "$zfile"; then
     touch $zfile
      echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $zfile
      echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $zfile
+     echo 'eval "$(pyenv init --path)"' >> 
      echo 'eval "$(pyenv init -)"' >> $zfile
      echo 'eval "$(pyenv virtualenv-init -)"' >> $zfile
 
